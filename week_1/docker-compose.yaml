@@ -6,14 +6,22 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=ny_taxi
     volumes:
-      - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
+      - de_zoomcamp_postgres:/var/lib/postgresql/data:rw  # rw: read+write
     ports:
-      - "5432:5432"
+      - 5432:5432
+
   pgadmin:
     image: dpage/pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=root
+    volumes:
+      - de_zoomcamp_pgadmin:/var/lib/pgadmin:rw
     ports:
-      - "8080:80"
-    
+      - 8080:80
+
+volumes:
+  de_zoomcamp_postgres:
+    external: true
+  de_zoomcamp_pgadmin:
+    external: false

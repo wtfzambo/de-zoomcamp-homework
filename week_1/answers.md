@@ -64,9 +64,19 @@ Tip: started and finished on 2019-01-15.
 Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format timestamp (date and hour+min+sec) and not in date.
 
 - 20689
-- 20530
+- 20530 ✅
 - 17630
 - 21090
+
+### Solution
+
+```sql
+select
+    count(1)
+from green_taxi_data
+where lpep_pickup_datetime::date = '2019-01-15'::date
+and lpep_dropoff_datetime::date = '2019-01-15'::date
+```
 
 ## Question 4. Largest trip for each day
 
@@ -75,8 +85,20 @@ Use the pick up time for your calculations.
 
 - 2019-01-18
 - 2019-01-28
-- 2019-01-15
+- 2019-01-15 ✅
 - 2019-01-10
+
+### Solution
+
+```sql
+select
+    lpep_pickup_datetime::date
+    , max(trip_distance) as dist
+from green_taxi_data
+group by 1
+order by 2 desc
+limit 1
+```
 
 ## Question 5. The number of passengers
 
