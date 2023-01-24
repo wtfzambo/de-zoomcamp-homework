@@ -106,8 +106,20 @@ In 2019-01-01 how many trips had 2 and 3 passengers?
 
 - 2: 1282 ; 3: 266
 - 2: 1532 ; 3: 126
-- 2: 1282 ; 3: 254
+- 2: 1282 ; 3: 254 ✅
 - 2: 1282 ; 3: 274
+
+### Solution
+
+```sql
+select
+    passenger_count
+    , count(1)
+from green_taxi_data
+where lpep_pickup_datetime::date = '2019-01-01'
+group by 1
+having passenger_count IN (2, 3)
+```
 
 ## Question 6. Largest tip
 
@@ -119,7 +131,27 @@ Note: it's not a typo, it's `tip` , not `trip`
 - Central Park
 - Jamaica
 - South Ozone Park
-- Long Island City/Queens Plaza
+- Long Island City/Queens Plaza ✅
+
+### Solution
+
+```sql
+select
+    zdo."Zone" as dropoff_zone
+    , max(g.tip_amount) as max_tip_size
+from green_taxi_data as g
+
+    join zone_lookup as zpu
+    on g."PULocationID" = zpu."LocationID"
+
+    join zone_lookup as zdo
+    on g."DOLocationID" = zdo."LocationID"
+
+where zpu."Zone" = 'Astoria'
+group by 1
+order by 2 desc
+limit 1
+```
 
 ## Submitting the solutions
 
