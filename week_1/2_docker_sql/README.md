@@ -159,7 +159,3 @@ limit 1
 - You can submit your homework multiple times. In this case, only the last submission will be used.
 
 Deadline: 26 January (Thursday), 22:00 CET
-
-## Solution
-
-We will publish the solution here

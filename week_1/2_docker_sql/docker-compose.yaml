@@ -24,4 +24,4 @@ volumes:
   de_zoomcamp_postgres:
     external: true
   de_zoomcamp_pgadmin:
-    external: false
+    external: true
