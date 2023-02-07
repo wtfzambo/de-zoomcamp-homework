@@ -42,3 +42,10 @@ resource "google_bigquery_dataset" "dataset" {
 
     delete_contents_on_destroy = true
 }
+
+resource "google_bigquery_table" "bg-table" {
+  table_id = var.TABLE_NAME
+  dataset_id = var.BQ_DATASET
+  project = var.project
+  deletion_protection = false
+}
