@@ -8,7 +8,7 @@ Using the `etl_web_to_gcs.py` flow that loads taxi data into GCS as a guide, cre
 
 How many rows does that dataset have?
 
-* 447,770
+* 447,770 ✅
 * 766,792
 * 299,234
 * 822,132
@@ -38,7 +38,7 @@ Create a deployment for this flow to run in a local subprocess with local flow c
 
 Make sure you have the parquet data files for Yellow taxi data for Feb. 2019 and March 2019 loaded in GCS. Run your deployment to append this data to your BiqQuery table. How many rows did your flow code process?
 
-* 14,851,920
+* 14,851,920 ✅
 * 12,282,990
 * 27,235,753
 * 11,338,483
