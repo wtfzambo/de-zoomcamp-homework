@@ -19,18 +19,21 @@ def fetch(dataset_url: str) -> pd.DataFrame:
 
 
 @task(log_prints=True)
-def write_local(df: pd.DataFrame, color: str, dataset_file: str) -> Path:
+def write_local(df: pd.DataFrame, color: str, dataset_file: str) -> list[Path]:
     """Write DataFrame out as parquet file"""
-    path = Path(f'data/{color}/{dataset_file}.parquet.gzip')
-    df.to_parquet(path, compression="gzip")
-    return path
+    current_script_dir = Path(__file__).parent
+    relative_data_path = f'data/{color}/{dataset_file}.parquet.gzip'
+    abs_data_path = current_script_dir.joinpath(relative_data_path).resolve()
+    abs_data_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(abs_data_path, compression="gzip")
+    return abs_data_path, relative_data_path
 
 
 @task(log_prints=True)
-def write_gcs(path: Path) -> None:
+def write_gcs(local_path: Path, gcs_path: Path) -> None:
     """Upload local parquet file to GCS"""
     gcs_block: GcsBucket = GcsBucket.load("de-zoomcamp-gcs")
-    gcs_block.upload_from_path(from_path=path, to_path=path)
+    gcs_block.upload_from_path(from_path=local_path, to_path=gcs_path)
 
 
 @flow
@@ -40,8 +43,8 @@ def etl_web_to_gcs(color: str, year: int, month: int) -> None:
     dataset_url = f'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz'
 
     df = fetch(dataset_url)
-    path = write_local(df, color, dataset_file)
-    write_gcs(path)
+    local_path, gcs_path = write_local(df, color, dataset_file)
+    write_gcs(local_path, gcs_path)
 
 
 # if __name__ == '__main__':
