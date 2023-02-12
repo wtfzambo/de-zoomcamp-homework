@@ -1,0 +1,45 @@
+###
+### A complete description of a Prefect Deployment for flow 'main-flow'
+###
+name: FVH NY Taxi data - [year] - Web to GCS
+description: null
+version: f32930ce0b7576dae63990f2f82a10d4
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: null
+tags: []
+parameters: {}
+schedule: null
+is_schedule_active: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: main-flow
+manifest_path: null
+storage: null
+path: /home/wtfzambo/my-stuff/courses/data_engineering_zoomcamp/homework
+entrypoint: week_3/homework/web_to_gcs.py:main_flow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    year:
+      title: year
+      position: 0
+      type: integer
+  required:
+  - year
+  definitions: null
+timestamp: '2023-02-11T17:26:19.772343+00:00'
