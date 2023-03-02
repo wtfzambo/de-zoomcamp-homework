@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: trips_data_all
+    tables:
+      - name: fhv_data
+      - name: green_trips
+      - name: yellow_trips

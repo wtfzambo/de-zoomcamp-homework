@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_trips_data_all__fhv_data
+    description: ""
+    columns:
+      - name: banana
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: pulocationid
+        description: ""
+
+      - name: dolocationid
+        description: ""
+
+      - name: sr_flag
+        description: ""
+
+      - name: affiliated_base_number
+        description: ""
