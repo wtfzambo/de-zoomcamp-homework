@@ -28,3 +28,9 @@ variable "TABLE_NAME" {
     type = string
     default = "ny_trips"
 }
+
+variable "TABLE_NAME_DBT" {
+    description = "Name of the table to be used for dbt project."
+    type = string
+    default = "ny_trips_dbt"
+}

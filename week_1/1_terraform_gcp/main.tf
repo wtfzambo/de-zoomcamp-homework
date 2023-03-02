@@ -49,3 +49,10 @@ resource "google_bigquery_table" "bg-table" {
   project = var.project
   deletion_protection = false
 }
+
+resource "google_bigquery_table" "bg-table-dbt" {
+  table_id = var.TABLE_NAME_DBT
+  dataset_id = var.BQ_DATASET
+  project = var.project
+  deletion_protection = false
+}

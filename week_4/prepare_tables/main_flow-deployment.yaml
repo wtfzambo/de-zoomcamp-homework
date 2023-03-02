@@ -1,0 +1,90 @@
+###
+### A complete description of a Prefect Deployment for flow 'Prepare dbt table on BQ'
+###
+name: NY Taxi data for dbt - [colors], [years] - Web to BQ
+description: null
+version: 8a5891fc5d9e61fe12e293179f834ba5
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: default-agent-pool
+tags: []
+parameters: {}
+schedule: null
+is_schedule_active: true
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: Prepare dbt table on BQ
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: 12dbc198-4cf9-453b-9028-9535cd6022b8
+  _block_document_name: anonymous-7e601e40-65b7-4068-bc27-6e3037df358b
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage: null
+path: /home/wtfzambo/my-stuff/courses/data_engineering_zoomcamp/homework/week_4
+entrypoint: prepare_bq_table_for_dbt.py:main_flow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    colors:
+      title: colors
+      default:
+      - yellow
+      - green
+      position: 0
+      type: array
+      items:
+        enum:
+        - yellow
+        - green
+        type: string
+    years:
+      title: years
+      default:
+      - 2019
+      - 2020
+      position: 1
+      type: array
+      items:
+        enum:
+        - 2019
+        - 2020
+        type: integer
+    months:
+      title: months
+      default: 12
+      position: 2
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      type: integer
+    replace_table:
+      title: replace_table
+      default: true
+      position: 3
+      type: boolean
+  required: null
+  definitions: null
+timestamp: '2023-02-23T12:29:23.166652+00:00'
