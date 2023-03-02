@@ -4,7 +4,7 @@ models:
   - name: stg_trips_data_all__fhv_data
     description: ""
     columns:
-      - name: banana
+      - name: dispatching_base_num
         description: ""
 
       - name: pickup_datetime

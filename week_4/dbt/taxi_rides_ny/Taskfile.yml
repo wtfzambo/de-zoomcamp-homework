@@ -244,6 +244,7 @@ tasks:
       _OUTPUT_PATH: '{{.TEMP_DIR}}/{{.OUTPUT_NAME}}'
       _REPLACE_TOKEN: '{{if .IS_YAML}}version{{else}}with source{{end}}'
     cmds:
+      - mkdir -p {{.DIR}}
       - >
         cat {{._OUTPUT_PATH}}
         | sed '/{{._REPLACE_TOKEN}}/,$!d'
