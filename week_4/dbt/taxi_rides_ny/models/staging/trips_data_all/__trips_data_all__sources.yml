@@ -2,6 +2,8 @@ version: 2
 
 sources:
   - name: trips_data_all
+    database: de-zoomcamp-wtfzalgo # aka project for BigQuery
+    schema: trips_data_all # aka dataset for BigQuery
     tables:
       - name: fhv_data
       - name: green_trips

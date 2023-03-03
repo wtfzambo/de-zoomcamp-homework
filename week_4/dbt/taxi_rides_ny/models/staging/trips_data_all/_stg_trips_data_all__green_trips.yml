@@ -7,28 +7,31 @@ models:
       - name: vendorid
         description: ""
 
-      - name: lpep_pickup_datetime
-        description: ""
-
-      - name: lpep_dropoff_datetime
-        description: ""
-
-      - name: store_and_fwd_flag
-        description: ""
-
       - name: ratecodeid
         description: ""
 
-      - name: pulocationid
+      - name: pickup_locationid
         description: ""
 
-      - name: dolocationid
+      - name: dropoff_locationid
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: store_and_fwd_flag
         description: ""
 
       - name: passenger_count
         description: ""
 
       - name: trip_distance
+        description: ""
+
+      - name: trip_type
         description: ""
 
       - name: fare_amount
@@ -56,9 +59,6 @@ models:
         description: ""
 
       - name: payment_type
-        description: ""
-
-      - name: trip_type
         description: ""
 
       - name: congestion_surcharge
