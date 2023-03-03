@@ -43,11 +43,15 @@ env:
 tasks:
 
   run-model:
-    desc: Run specified dbt model
+    desc: '{{.DESC}}'
+    summary: |
+      Usage:
+        - task {{.TASK}} -- my_model_name
     silent: true
     aliases: [r]
     label: '{{.TASK}}-{{.MODEL}}'
     vars:
+      DESC: Run specified dbt model
       MODEL: '{{.CLI_ARGS}}'
       MODEL_DIR: '{{.MODEL_DIR}}'
       _MODEL_PATH:
@@ -69,6 +73,10 @@ tasks:
 
   generate-source-yaml:
     desc: Generate {{.SOURCES_FILE}} file for tables in specified schema
+    summary: |
+      Usage:
+        - task {{.TASK}} SCHEMA=my_schema
+        - task {{.TASK}} SCHEMA=my_schema -- table_1 table_2 ...
     silent: true
     aliases: [gsy]
     vars:
@@ -93,6 +101,9 @@ tasks:
 
   generate-model-yaml:
     desc: Generate a model.yaml for each name passed
+    summary: |
+      Usage:
+        - task {{.TASK}} -- model_1 model_2 ...
     silent: true
     aliases:
       - gmy
@@ -115,7 +126,7 @@ tasks:
       - echo {{.GENERATING_MODELS_YAML}}
       - echo {{shellQuote ._FIND_MODEL_OUTPUT}} | grep {{shellQuote .FILE_NOT_FOUND}} || true
       - >
-        {{if not ._FILE_PATHS}}exit 1{{end}}
+        {{if not ._FILE_PATHS}}exit 1{{- end -}}
       - task: _loop_model_files
         vars: {FILE_PATHS: '{{._FILE_PATHS}}', UPSTREAM_DESCRIPTIONS: '{{.UPSTREAM_DESCRIPTIONS}}'}
 
