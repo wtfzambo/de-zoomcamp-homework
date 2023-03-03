@@ -56,7 +56,7 @@ tasks:
       MODEL_DIR: '{{.MODEL_DIR}}'
       _MODEL_PATH:
         sh: >
-          {{if not .MODEL_DIR}}find models -name {{.MODEL}}.sql{{end}}
+          {{if not .MODEL_DIR}}find {{.MODELS_DIR}} -name {{.MODEL}}.sql{{end}}
       _MODEL_DIR:
         sh: >
           echo {{if ._MODEL_PATH}}{{osDir ._MODEL_PATH}}{{else}}{{.MODEL_DIR}}{{end}}
@@ -254,7 +254,7 @@ tasks:
     internal: true
     silent: true
     vars:
-      DIR: '{{default "models" .DIR}}'
+      DIR: '{{default .MODELS_DIR .DIR}}'
       FILE_NAME: '{{.FILE_NAME}}'
       OUTPUT_NAME: '{{.OUTPUT_NAME}}'
       IS_YAML: '{{.IS_YAML}}'
@@ -289,7 +289,7 @@ tasks:
       _MSG: '{{printf ._MSG_TEMPLATE .FILE_NAME}}'
       _FILE_DIR:
         sh: |
-          find models -name *{{.FILE_NAME}}.sql
+          find {{.MODELS_DIR}} -name *{{.FILE_NAME}}.sql
     cmds:
       - >
         {{if ._FILE_DIR}}echo {{._FILE_DIR}}{{else}}echo -e {{._MSG}}{{end}}
