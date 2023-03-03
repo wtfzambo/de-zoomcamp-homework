@@ -46,6 +46,7 @@ tasks:
     desc: Run specified dbt model
     silent: true
     aliases: [r]
+    label: '{{.TASK}}-{{.MODEL}}'
     vars:
       MODEL: '{{.CLI_ARGS}}'
       MODEL_DIR: '{{.MODEL_DIR}}'
@@ -57,6 +58,11 @@ tasks:
           echo {{if ._MODEL_PATH}}{{osDir ._MODEL_PATH}}{{else}}{{.MODEL_DIR}}{{end}}
     cmds:
       - dbt run --select {{.MODEL}}
+    sources:
+      - '{{._MODEL_DIR}}/{{.MODEL}}.sql'
+    generates:
+      - target/compiled/**/{{._MODEL_DIR}}/{{.MODEL}}.sql
+      - target/run/**/{{._MODEL_DIR}}/{{.MODEL}}.sql
     status:
       - test -f target/compiled/**/{{._MODEL_DIR}}/{{.MODEL}}.sql
       - test -f target/run/**/{{._MODEL_DIR}}/{{.MODEL}}.sql
