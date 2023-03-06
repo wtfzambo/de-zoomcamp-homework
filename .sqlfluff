@@ -1,0 +1,9 @@
+[sqlfluff]
+templater = jinja
+dialect = bigquery
+
+[sqlfluff:templater:dbt]
+project_dir = ./week_4/dbt/taxi_rides_ny
+; profiles_dir = ./test_banana
+; profile = test_banana
+; target = dev

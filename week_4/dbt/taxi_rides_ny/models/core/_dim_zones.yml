@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_zones
+    description: ""
+    columns:
+      - name: locationid
+        description: ""
+
+      - name: borough
+        description: ""
+
+      - name: zone
+        description: ""
+
+      - name: service_zone
+        description: ""

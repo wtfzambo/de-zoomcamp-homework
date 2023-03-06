@@ -1,0 +1,49 @@
+[sqlfluff]
+dialect = bigquery
+processes = -1
+# Below controls SQLFluff output, see max_line_length for SQL output
+output_line_length = 120
+max_line_length = 120
+# Ignore linting errors found within sections of code coming directly from
+# templated code (e.g. from within Jinja curly braces. Note that it does not
+# ignore errors from literal code found within template loops.
+ignore_templated_areas = True
+
+[sqlfluff:templater:jinja]
+apply_dbt_builtins = True
+load_macros_from_path = ./macros/
+library_path = ./sqlfluff_libs/
+
+[sqlfluff:templater:jinja:macros]
+dbt_ref = {% macro ref(model_ref) %}{{model_ref}}{% endmacro %}
+dbt_source = {% macro source(source_name, table) %}{{source_name}}.{{table}}{% endmacro %}
+dbt_config = {% macro config() %}{% for k in kwargs %}{% endfor %}{% endmacro %}
+dbt_var = {% macro var(variable, default='') %}item{% endmacro %}
+dbt_is_incremental = {% macro is_incremental() %}True{% endmacro %}
+
+[sqlfluff:indentation]
+# See https://docs.sqlfluff.com/en/stable/layout.html#configuring-indent-locations
+indented_joins = False
+indented_ctes = False
+indented_using_on = True
+indented_on_contents = True
+template_blocks_indent = True
+tab_space_size = 4
+indent_unit = space
+
+[sqlfluff:layout:type:end_of_file]
+spacing_before = touch
+
+# Layout configuration
+[sqlfluff:layout:type:comma]
+# See https://docs.sqlfluff.com/en/stable/layout.html#configuring-layout-and-spacing
+spacing_before = touch
+line_position = leading
+
+[sqlfluff:rules:L010]
+# keywords
+capitalisation_policy = lower
+
+[sqlfluff:rules:L030]
+# function names
+extended_capitalisation_policy = lower
