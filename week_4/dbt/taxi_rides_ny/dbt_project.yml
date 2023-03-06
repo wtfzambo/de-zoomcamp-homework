@@ -32,5 +32,9 @@ clean-targets: # directories to be removed by `dbt clean`
 models:
   taxi_rides_ny:
     +materialized: view
-    staging:
-      +schema: staging
+
+seeds:
+  taxi_rides_ny:
+    taxi_zone_lookup:
+      +column_types:
+        locationid: numeric

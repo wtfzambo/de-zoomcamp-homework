@@ -4,6 +4,9 @@ models:
   - name: stg_trips_data_all__green_trips
     description: ""
     columns:
+      - name: tripid
+        description: ""
+
       - name: vendorid
         description: ""
 
@@ -59,6 +62,9 @@ models:
         description: ""
 
       - name: payment_type
+        description: ""
+
+      - name: payment_type_description
         description: ""
 
       - name: congestion_surcharge
