@@ -1,0 +1,42 @@
+{
+  "python.languageServer": "Jedi",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--disable=all", "--enable=import-error"],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.inlayHints.variableTypes": false,
+  "dbt.queryLimit": 500,
+  "sqlfluff.linter.delay": 100,
+  "sqlfluff.linter.run": "onSave",
+  "files.autoSave": "afterDelay",
+  "[jinja-sql]": {
+    "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 4,
+    "editor.indentSize": "tabSize",
+    "editor.insertSpaces": true
+  },
+  "files.autoSaveDelay": 1000,
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/dbt_yml_files.json": [
+      "/**/*.yml",
+      "!profiles.yml",
+      "!dbt_project.yml",
+      "!packages.yml",
+      "!selectors.yml",
+      "!profile_template.yml",
+      "!Task*.{yaml,yml}"
+    ],
+    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/dbt_project.json": [
+      "dbt_project.yml"
+    ],
+    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/selectors.json": [
+      "selectors.yml"
+    ],
+    "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/packages.json": [
+      "packages.yml"
+    ]
+  },
+  "[csv][dynamic csv][tsv][csv (semicolon)]": {
+    "editor.stickyScroll.enabled": true
+  }
+}
