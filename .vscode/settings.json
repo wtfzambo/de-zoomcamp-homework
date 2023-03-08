@@ -5,9 +5,13 @@
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.inlayHints.variableTypes": false,
   "dbt.queryLimit": 500,
+  "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
   "sqlfluff.linter.delay": 100,
   "sqlfluff.linter.run": "onSave",
   "files.autoSave": "afterDelay",
+  "files.associations": {
+    "*.md": "jinja-md"
+  },
   "[jinja-sql]": {
     "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
     "editor.formatOnSave": false,
@@ -38,5 +42,5 @@
   },
   "[csv][dynamic csv][tsv][csv (semicolon)]": {
     "editor.stickyScroll.enabled": true
-  }
+  },
 }

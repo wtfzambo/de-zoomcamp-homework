@@ -2,85 +2,85 @@ version: 2
 
 models:
   - name: fact_trips
-    description: ""
+    description: "Some description about the model"
     columns:
       - name: tripid
-        description: ""
+        description: "{{ doc('tripid') }}"
 
       - name: vendorid
-        description: ""
+        description: "{{ doc('vendorid') }}"
 
       - name: service_type
-        description: ""
+        description: "{{ doc('service_type') }}"
 
       - name: ratecodeid
-        description: ""
+        description: "{{ doc('ratecodeid') }}"
 
       - name: pickup_locationid
-        description: ""
+        description: "{{ doc('pickup_locationid') }}"
 
       - name: pickup_borough
-        description: ""
+        description: "{{ doc('pickup_borough') }}"
 
       - name: pickup_zone
-        description: ""
+        description: "{{ doc('pickup_zone') }}"
 
       - name: dropoff_locationid
-        description: ""
+        description: "{{ doc('dropoff_locationid') }}"
 
       - name: dropoff_borough
-        description: ""
+        description: "{{ doc('dropoff_borough') }}"
 
       - name: dropoff_zone
-        description: ""
+        description: "{{ doc('dropoff_zone') }}"
 
       - name: pickup_datetime
-        description: ""
+        description: "{{ doc('pickup_datetime') }}"
 
       - name: dropoff_datetime
-        description: ""
+        description: "{{ doc('dropoff_datetime') }}"
 
       - name: store_and_fwd_flag
-        description: ""
+        description: "{{ doc('store_and_fwd_flag') }}"
 
       - name: passenger_count
-        description: ""
+        description: "{{ doc('passenger_count') }}"
 
       - name: trip_distance
-        description: ""
+        description: "{{ doc('trip_distance') }}"
 
       - name: trip_type
-        description: ""
+        description: "{{ doc('trip_type') }}"
 
       - name: fare_amount
-        description: ""
+        description: "{{ doc('fare_amount') }}"
 
       - name: extra
-        description: ""
+        description: "{{ doc('extra') }}"
 
       - name: mta_tax
-        description: ""
+        description: "{{ doc('mta_tax') }}"
 
       - name: tip_amount
-        description: ""
+        description: "{{ doc('tip_amount') }}"
 
       - name: tolls_amount
-        description: ""
+        description: "{{ doc('tolls_amount') }}"
 
       - name: ehail_fee
-        description: ""
+        description: "{{ doc('ehail_fee') }}"
 
       - name: improvement_surcharge
-        description: ""
+        description: "{{ doc('improvement_surcharge') }}"
 
       - name: total_amount
-        description: ""
+        description: "{{ doc('total_amount') }}"
 
       - name: payment_type
-        description: ""
+        description: "{{ doc('payment_type') }}"
 
       - name: payment_type_description
-        description: ""
+        description: "{{ doc('payment_type_description') }}"
 
       - name: congestion_surcharge
-        description: ""
+        description: "{{ doc('congestion_surcharge') }}"

@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: dm_monthly_zone_revenue
+    description: ""
+    columns:
+      - name: revenue_zone
+        description: "{{ doc('revenue_zone') }}"
+
+      - name: revenue_month
+        description: "{{ doc('revenue_month') }}"
+
+      - name: service_type
+        description: "{{ doc('service_type') }}"
+
+      - name: revenue_monthly_fare
+        description: "{{ doc('revenue_monthly_fare') }}"
+
+      - name: revenue_monthly_extra
+        description: "{{ doc('revenue_monthly_extra') }}"
+
+      - name: revenue_monthly_mta_tax
+        description: "{{ doc('revenue_monthly_mta_tax') }}"
+
+      - name: revenue_monthly_tip_amount
+        description: "{{ doc('revenue_monthly_tip_amount') }}"
+
+      - name: revenue_monthly_tolls_amount
+        description: "{{ doc('revenue_monthly_tolls_amount') }}"
+
+      - name: revenue_monthly_ehail_fee
+        description: "{{ doc('revenue_monthly_ehail_fee') }}"
+
+      - name: revenue_monthly_improvement_surcharge
+        description: "{{ doc('revenue_monthly_improvement_surcharge') }}"
+
+      - name: revenue_monthly_total_amount
+        description: "{{ doc('revenue_monthly_total_amount') }}"
+
+      - name: revenue_monthly_congestion_surcharge
+        description: "{{ doc('revenue_monthly_congestion_surcharge') }}"
+
+      - name: total_monthly_trips
+        description: "{{ doc('total_monthly_trips') }}"
+
+      - name: avg_montly_passenger_count
+        description: "{{ doc('avg_montly_passenger_count') }}"
+
+      - name: avg_montly_trip_distance
+        description: "{{ doc('avg_montly_trip_distance') }}"

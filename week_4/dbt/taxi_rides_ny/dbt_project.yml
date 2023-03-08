@@ -32,6 +32,10 @@ clean-targets: # directories to be removed by `dbt clean`
 models:
   taxi_rides_ny:
     +materialized: view
+    core:
+      +persist_docs:
+        relation: true
+        columns: true
 
 seeds:
   taxi_rides_ny:
