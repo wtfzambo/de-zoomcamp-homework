@@ -60,10 +60,6 @@ This column represents the pickup zone where the trip began and is used to group
 This column represents the month in which the trip was made and is used to group revenue by month. The date is truncated to the beginning of the month using the date_trunc() function.
 {% enddocs %}
 
-{% docs service_type %}
-This column represents the type of service provided during the trip (e.g. standard, premium, etc.).
-{% enddocs %}
-
 {% docs revenue_monthly_fare %}
 This column represents the total fare revenue collected during the month, calculated by summing the fare_amount column for all trips that occurred during that month.
 {% enddocs %}

@@ -4,13 +4,38 @@ models:
   - name: stg_trips_data_all__yellow_trips
     description: ""
     columns:
+      - name: tripid
+        description: ""
+        tests:
+          - unique:
+              severity: warn
+          - not_null:
+              severity: warn
+
       - name: vendorid
         description: ""
 
-      - name: tpep_pickup_datetime
+      - name: ratecodeid
         description: ""
 
-      - name: tpep_dropoff_datetime
+      - name: pickup_locationid
+        description: ""
+        tests:
+          - relationships:
+              field: locationid
+              to: ref('taxi_zone_lookup')
+              severity: warn
+
+      - name: dropoff_locationid
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: store_and_fwd_flag
         description: ""
 
       - name: passenger_count
@@ -19,19 +44,7 @@ models:
       - name: trip_distance
         description: ""
 
-      - name: ratecodeid
-        description: ""
-
-      - name: store_and_fwd_flag
-        description: ""
-
-      - name: pulocationid
-        description: ""
-
-      - name: dolocationid
-        description: ""
-
-      - name: payment_type
+      - name: trip_type
         description: ""
 
       - name: fare_amount
@@ -49,10 +62,24 @@ models:
       - name: tolls_amount
         description: ""
 
+      - name: ehail_fee
+        description: ""
+
       - name: improvement_surcharge
         description: ""
 
       - name: total_amount
+        description: ""
+
+      - name: payment_type
+        description: ""
+        tests:
+          - accepted_values:
+              values: "{{ var('payment_type_values') }}"
+              quote: false
+              severity: warn
+
+      - name: payment_type_description
         description: ""
 
       - name: congestion_surcharge

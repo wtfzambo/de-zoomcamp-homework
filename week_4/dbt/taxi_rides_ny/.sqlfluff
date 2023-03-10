@@ -19,6 +19,7 @@ dbt_ref = {% macro ref(model_ref) %}{{model_ref}}{% endmacro %}
 dbt_source = {% macro source(source_name, table) %}{{source_name}}.{{table}}{% endmacro %}
 dbt_config = {% macro config() %}{% for k in kwargs %}{% endfor %}{% endmacro %}
 dbt_var = {% macro var(variable, default='') %}item{% endmacro %}
+dbt_env_var = {% macro env_var(variable) %}item{% endmacro %}
 dbt_is_incremental = {% macro is_incremental() %}True{% endmacro %}
 
 [sqlfluff:indentation]

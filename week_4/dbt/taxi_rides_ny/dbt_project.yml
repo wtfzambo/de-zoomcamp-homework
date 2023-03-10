@@ -31,11 +31,14 @@ clean-targets: # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   taxi_rides_ny:
+    +persist_docs:
+      relation: true
+      columns: true
     +materialized: view
-    core:
-      +persist_docs:
-        relation: true
-        columns: true
+
+vars:
+  payment_type_values: [1, 2, 3, 4, 5, 6]
+  is_test_run: "{{ env_var('IS_TEST_RUN') }}"
 
 seeds:
   taxi_rides_ny:

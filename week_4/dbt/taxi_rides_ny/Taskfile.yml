@@ -167,6 +167,8 @@ tasks:
           model_names: [{{.MODEL_NAMES}}],
           upstream_descriptions: {{.UPSTREAM_DESCRIPTIONS}}
         }
+    # seems like model only needs to be compiled instead of ran to have proper
+    # column names. change the precondition
     preconditions:
       - task run-model MODEL_DIR={{.DIR}} -- {{.MODEL_NAMES}}
     cmds:
@@ -316,3 +318,9 @@ tasks:
     silent: true
     cmds:
       - echo $(dirname $(dbt debug | grep 'Using dbt_project.yml' | cut -d\  -f5)) || echo Not in a dbt project
+
+  add-docs-block-to-file-columns:
+    desc: 'Work in progress'
+    internal: true
+    cmds:
+      - yq e "with(.models[].columns[]; .description = \"{{ doc('\" + .name + \"') }}\" | to_json(0)) " _dim_zones.yml

@@ -2,10 +2,20 @@ version: 2
 
 models:
   - name: stg_trips_data_all__green_trips
-    description: ""
+    description: >
+      Trips made by green taxis, also known as boro taxis and street-hail liveries.
+      Green taxis may respond to street hails, but only in the areas indicated in green on
+      the map (i.e. above W 100 St/E 96th St in Manhattan and in the boroughs).
+      The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by
+      technology service providers.
     columns:
       - name: tripid
         description: ""
+        tests:
+          - unique:
+              severity: warn
+          - not_null:
+              severity: warn
 
       - name: vendorid
         description: ""
@@ -15,6 +25,11 @@ models:
 
       - name: pickup_locationid
         description: ""
+        tests:
+          - relationships:
+              field: locationid
+              to: ref('taxi_zone_lookup')
+              severity: warn
 
       - name: dropoff_locationid
         description: ""
@@ -62,7 +77,13 @@ models:
         description: ""
 
       - name: payment_type
-        description: ""
+        description: A numeric code signifying how the passenger paid for the trip
+        tests:
+          - accepted_values:
+              values: "{{ var('payment_type_values') }}"
+              severity: warn
+              quote: false
+
 
       - name: payment_type_description
         description: ""

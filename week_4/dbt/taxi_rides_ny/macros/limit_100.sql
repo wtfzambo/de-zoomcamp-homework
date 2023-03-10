@@ -1,7 +1,7 @@
-{%- macro limit_100() -%}
-{%- if var('is_test_run', default=True) -%}
+{%- macro limit_10000() -%}
+{%- if var('is_test_run', default=True) == 'true' -%}
 
-limit 100
+limit 10000
 
 {%- endif -%}
 {%- endmacro -%}

@@ -3,6 +3,15 @@ source as (
     select * from {{ source('trips_data_all', 'green_trips') }}
 )
 
+, dedupe_rows as (
+    select
+        *
+        , row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
+
+    from source
+    where vendorid is not null
+)
+
 , renamed as (
     select
         {{ dbt_utils.generate_surrogate_key(['vendorid', 'lpep_pickup_datetime']) }} as tripid
@@ -28,10 +37,10 @@ source as (
         , {{ get_payment_type_description('payment_type') }} as payment_type_description
         , cast({{ adapter.quote("congestion_surcharge") }} as numeric) as congestion_surcharge
 
-    from source
-    where vendorid is not null
+    from dedupe_rows
+    where rn = 1
 )
 
 select *
 from renamed
-{{ limit_100() }}
+{{ limit_10000() }}
