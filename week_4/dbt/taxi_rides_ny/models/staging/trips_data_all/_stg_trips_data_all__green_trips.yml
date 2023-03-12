@@ -33,6 +33,11 @@ models:
 
       - name: dropoff_locationid
         description: ""
+        tests:
+          - relationships:
+              field: locationid
+              to: ref('taxi_zone_lookup')
+              severity: warn
 
       - name: pickup_datetime
         description: ""
@@ -83,7 +88,6 @@ models:
               values: "{{ var('payment_type_values') }}"
               severity: warn
               quote: false
-
 
       - name: payment_type_description
         description: ""

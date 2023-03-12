@@ -4,6 +4,14 @@ models:
   - name: stg_trips_data_all__fhv_data
     description: ""
     columns:
+      - name: tripid
+        description: ""
+        tests:
+          - unique:
+              severity: warn
+          - not_null:
+              severity: warn
+
       - name: dispatching_base_num
         description: ""
 
@@ -13,11 +21,21 @@ models:
       - name: dropoff_datetime
         description: ""
 
-      - name: pulocationid
+      - name: pickup_locationid
         description: ""
+        tests:
+          - relationships:
+              field: locationid
+              to: ref('taxi_zone_lookup')
+              severity: warn
 
-      - name: dolocationid
+      - name: dropoff_locationid
         description: ""
+        tests:
+          - relationships:
+              field: locationid
+              to: ref('taxi_zone_lookup')
+              severity: warn
 
       - name: sr_flag
         description: ""

@@ -319,8 +319,22 @@ tasks:
     cmds:
       - echo $(dirname $(dbt debug | grep 'Using dbt_project.yml' | cut -d\  -f5)) || echo Not in a dbt project
 
-  add-docs-block-to-file-columns:
+  add-docs-block-to-model-columns-in-yml:
     desc: 'Work in progress'
     internal: true
     cmds:
       - yq e "with(.models[].columns[]; .description = \"{{ doc('\" + .name + \"') }}\" | to_json(0)) " _dim_zones.yml
+
+  confirm:
+    desc: Execute dangerous command
+    cmds:
+      - |
+        read -p "Display me as a prompt. Continue? (y/N) " -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]
+        then
+          echo continue
+        else
+          exit 1
+        fi
+      - echo continue 2
