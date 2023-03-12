@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: fact_fhv_trips
+    description: ""
+    columns:
+      - name: tripid
+        description: ""
+
+      - name: dispatching_base_num
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: pickup_locationid
+        description: ""
+
+      - name: pickup_borough
+        description: ""
+
+      - name: pickup_zone
+        description: ""
+
+      - name: dropoff_locationid
+        description: ""
+
+      - name: dropoff_borough
+        description: ""
+
+      - name: dropoff_zone
+        description: ""
+
+      - name: sr_flag
+        description: ""
+
+      - name: affiliated_base_number
+        description: ""
