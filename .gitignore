@@ -133,3 +133,5 @@ data/
 *.csv
 .terraform/
 week_1/1_terraform_gcp/README.md
+.envrc
+client.properties
