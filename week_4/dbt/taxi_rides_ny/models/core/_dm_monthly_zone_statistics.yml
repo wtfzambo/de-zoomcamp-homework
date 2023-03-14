@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dm_monthly_zone_statistics
+    description: ""
+    columns:
+      - name: revenue_zone
+        description: ""
+
+      - name: revenue_month
+        description: ""
+
+      - name: service_type
+        description: ""
+
+      - name: total_monthly_trips
+        description: ""
+
+      - name: avg_montly_passenger_count
+        description: ""
+
+      - name: avg_montly_trip_distance
+        description: ""

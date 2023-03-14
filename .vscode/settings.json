@@ -28,7 +28,8 @@
       "!packages.yml",
       "!selectors.yml",
       "!profile_template.yml",
-      "!Task*.{yaml,yml}"
+      "!Task*.{yaml,yml}",
+      "!.piperider/**"
     ],
     "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/dbt_project.json": [
       "dbt_project.yml"
