@@ -2,7 +2,7 @@ from json import loads
 from pathlib import Path
 from typing import Dict, List
 
-from config import KAFKA_TOPIC, read_ccloud_config
+from config import CONFIG_PATH, KAFKA_TOPIC, read_ccloud_config
 from confluent_kafka import Consumer, Message
 from ride import Ride
 
@@ -30,7 +30,7 @@ class JsonConsumer(Consumer):
 
 if __name__ == "__main__":
     path = Path(__file__).parent
-    configs = (path / '../client.properties').resolve()
+    configs = (path / CONFIG_PATH).resolve()
     props = read_ccloud_config(configs)
     props["group.id"] = "python-group-1"
     props["auto.offset.reset"] = "earliest"

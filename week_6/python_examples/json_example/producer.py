@@ -2,7 +2,8 @@ import csv
 from pathlib import Path
 from typing import Dict, List
 
-from config import INPUT_DATA_PATH, KAFKA_TOPIC, read_ccloud_config
+from config import (CONFIG_PATH, INPUT_DATA_PATH, KAFKA_TOPIC,
+                    read_ccloud_config)
 from confluent_kafka import KafkaException, Producer
 from ride import Ride
 
@@ -33,7 +34,7 @@ class JsonProducer(Producer):
 
 if __name__ == '__main__':
     path = Path(__file__).parent
-    configs = (path / '../client.properties').resolve()
+    configs = (path / CONFIG_PATH).resolve()
     props = read_ccloud_config(configs)
 
     producer = JsonProducer(props)
