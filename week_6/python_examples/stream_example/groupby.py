@@ -2,7 +2,7 @@ from pathlib import Path
 
 import faust
 from aiokafka.helpers import create_ssl_context
-from config import CONFIG_PATH, KAFKA_TOPIC, read_ccloud_config
+from config import CONFIG_PATH, KAFKA_TOPIC_PREFIX, read_ccloud_config
 from faust.types.auth import AuthProtocol, SASLMechanism
 from faust.types.streams import StreamT
 from ride import Ride
@@ -28,7 +28,7 @@ app = faust.App(
     topic_partitions=2,
     topic_replication_factor=3,
 )
-topic = app.topic(KAFKA_TOPIC, value_type=Ride, partitions=2)
+topic = app.topic(KAFKA_TOPIC_PREFIX, value_type=Ride, partitions=2)
 vendor_rides = app.Table('vendor_rides', default=int, partitions=2)
 
 

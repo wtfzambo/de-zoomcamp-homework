@@ -2,7 +2,7 @@ from json import loads
 from pathlib import Path
 from typing import Dict, List
 
-from config import CONFIG_PATH, KAFKA_TOPIC, read_ccloud_config
+from config import CONFIG_PATH, KAFKA_TOPIC_PREFIX, read_ccloud_config
 from confluent_kafka import Consumer, Message
 from ride import Ride
 
@@ -36,4 +36,4 @@ if __name__ == "__main__":
     props["auto.offset.reset"] = "earliest"
 
     json_consumer = JsonConsumer(props)
-    json_consumer.consume_from_confluent(topics=[KAFKA_TOPIC])
+    json_consumer.consume_from_confluent(topics=[KAFKA_TOPIC_PREFIX])
